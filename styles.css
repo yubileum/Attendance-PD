@@ -80,3 +80,9 @@ button:hover {
 .popup-content p {
     font-size: 18px;
 }
+
+.popup-content p span {
+    color: green;
+    font-weight: bold;
+}
+

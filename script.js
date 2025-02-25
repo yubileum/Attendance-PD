@@ -1,31 +1,30 @@
 function checkIn() {
-    const phoneNumber = document.getElementById("phoneNumber").value.trim();
+    var phoneNumber = document.getElementById("phoneNumber").value.trim();
+
     if (!phoneNumber) {
-        showPopup("Please enter a phone number", "red");
+        alert("Please enter your phone number");
         return;
     }
 
-    document.getElementById("loading").style.display = "flex"; // Show loading screen
+    document.getElementById("loading").style.display = "flex"; // Tampilkan loading screen
 
-    fetch(`https://script.google.com/macros/s/AKfycbyDJQgXYrfcbmsIbdbUZmBp2S8pbVf-qgOmG4YzkGUbhJx_YTGC-rIOPSWmggS1jIBNPA/exec?phone=${phoneNumber}`)
+    fetch("https://script.google.com/macros/s/AKfycbwiU2KKWNp8kUnEN_Z3OiLSEEF1jOsZPdl-gIyzWMFrSwgjj0gJQHGqmJ7HFfohTtcUEg/exec?phone=" + encodeURIComponent(phoneNumber), { cache: "no-store" })
         .then(response => response.json())
         .then(data => {
-            if (data.exists) {
-                showPopup(`Welcome ${data.name}!`, "green");
-            } else {
-                showPopup("User not registered", "red");
-            }
-        })
-        .catch(() => showPopup("Error retrieving data", "red"))
-        .finally(() => {
-            document.getElementById("loading").style.display = "none"; // Hide loading screen
-        });
-}
+            document.getElementById("loading").style.display = "none"; // Sembunyikan loading screen
 
-function showPopup(message, color) {
-    document.getElementById("message").textContent = message;
-    document.getElementById("message").style.color = color;
-    document.getElementById("popup").style.display = "flex";
+            if (data.success) {
+                document.getElementById("message").innerHTML = `Welcome <span>${data.name}</span>`;
+            } else {
+                document.getElementById("message").innerText = "Phone number not found.";
+            }            
+            document.getElementById("popup").style.display = "flex";
+        })
+        .catch(error => {
+            document.getElementById("loading").style.display = "none";
+            alert("Error fetching data. Please try again.");
+            console.error("Error:", error);
+        });
 }
 
 function closePopup() {
