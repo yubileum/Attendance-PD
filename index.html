@@ -12,7 +12,7 @@
         <h2>St. Yakobus Attendance</h2>
         <p>Enter your phone number to check in</p>
         <div class="input-container">
-            <input type="tel" id="phoneNumber" placeholder="Enter phone number">
+            <input type="tel" id="phoneNumber" placeholder="Enter phone number" oninput="validatePhoneNumber(this)">
         </div>
         <button onclick="checkIn()">Check In</button>
     </div>
@@ -31,6 +31,12 @@
             <button onclick="closePopup()">OK</button>
         </div>
     </div>
+
+    <script>
+        function validatePhoneNumber(input) {
+            input.value = input.value.replace(/\D/g, '');
+        }
+    </script>
 
     <script src="script.js"></script>
 
