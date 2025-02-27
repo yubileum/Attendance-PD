@@ -8,7 +8,7 @@ function checkIn() {
 
     document.getElementById("loading").style.display = "flex"; // Tampilkan loading screen
 
-    fetch("https://script.google.com/macros/s/AKfycbw4NWiS1utAuapAPY1yW-I59JoQvPMofRZSTb_V5NXeytyM35xvMdzOhPlbFGywGlAV-Q/exec?phone=" + encodeURIComponent(phoneNumber), { cache: "no-store" })
+    fetch("https://script.google.com/macros/s/AKfycbxC0_vMwfrD62VUgtbfD7XZNxpVZMQlJUW-GmalA5ITKXjrmHaQybUFQL_6edi8_D3P/exec?phone=" + encodeURIComponent(phoneNumber), { cache: "no-store" })
         .then(response => response.json())
         .then(data => {
             document.getElementById("loading").style.display = "none"; // Sembunyikan loading screen
