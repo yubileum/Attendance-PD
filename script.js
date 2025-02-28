@@ -16,7 +16,7 @@ function checkIn() {
             if (data.success) {
                 document.getElementById("message").innerHTML = `Shalom <span>${data.name}</span> </br> We're happy to see you!`;
             } else {
-                document.getElementById("message").innerHTML = `Nomor HP belum terdaftar, registrasi dulu di <a href="https://forms.gle/WJWFGg69V8WtSjqf7" target="_blank">https://forms.gle/WJWFGg69V8WtSjqf7</a>`;
+                document.getElementById("message").innerHTML = `Nomor HP belum terdaftar </br> registrasi dulu di <a href="https://forms.gle/WJWFGg69V8WtSjqf7" target="_blank">https://forms.gle/WJWFGg69V8WtSjqf7</a>`;
             }            
             document.getElementById("popup").style.display = "flex";
         })
